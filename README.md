@@ -8,5 +8,3 @@ Completed:
 1. Introduction
 - Starting Out
 - Types and Typeclasses
-  - Believe the type
-  - Type variables
