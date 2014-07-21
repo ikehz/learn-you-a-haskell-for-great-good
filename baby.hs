@@ -34,3 +34,48 @@ removeOdds xxs = [ [ x | x <- xs, even x ] | xs <- xxs ]
 
 triangle24 :: [(Int, Int, Int)]
 triangle24 = [ (a,b,c) | (a,b,c) <- [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2], a + b + c == 24 ]
+
+lucky :: (Integral a) => a -> String
+lucky 7 = "Win!"
+lucky x = "Too bad."
+
+factorial :: (Integral a) => a -> a
+factorial 0 = 1
+factorial n = n * factorial (n-1)
+
+charName :: Char -> String
+charName 'a' = "Al"
+charName 'b' = "Bob"
+charName 'c' = "Chris"
+
+-- a function that takes two vectors in a 2D space (that are in the form of pairs) and adds them together
+addVectors :: (Num a, Num b) => (a,b) -> (a,b) -> (a,b)
+addVectors (x1,y1) (x2,y2) = (x1+x2,y1+y2)
+
+-- our own implementation of the head function
+head' :: [a] -> a
+head' [] = error "Can't find the head of a headless list"
+head' (x:_) = x
+
+-- our own implementation of the length function, with recursion
+length'' :: [a] -> Int
+length'' [] = 0
+length'' (_:xs) = 1 + length'' xs
+
+first :: String -> String
+first "" = "Oops, empty!"
+first all@(c:_) = "The first character of " ++ all ++ " is " ++ [c] ++ "."
+
+bmiTell :: (RealFloat a) => a -> a -> String
+bmiTell weight height
+    | bmi <= 18.5 = "Underweight"
+    | bmi <= 25.0 = "Normal"
+    | bmi <= 30.0 = "Overweight"
+    | otherwise   = "Obese"
+    where bmi = weight / height ^2
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+    | a < b     = LT
+    | a > b     = GT
+    | otherwise = EQ

@@ -8,3 +8,7 @@ Completed:
 1. Introduction
 - Starting Out
 - Types and Typeclasses
+- Syntax in Functions
+  - Pattern matching
+  - Guards, guards!
+  - Where!?
