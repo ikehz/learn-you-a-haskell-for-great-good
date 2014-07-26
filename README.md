@@ -9,3 +9,4 @@ Completed:
 - Starting Out
 - Types and Typeclasses
 - Syntax in Functions
+- Recursion
