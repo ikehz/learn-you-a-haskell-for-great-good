@@ -144,3 +144,13 @@ quicksort (x:xs) =
     let smallerSorted = quicksort [ a | a <- xs, a <= x ]
         biggerSorted = quicksort [ a | a <- xs, a > x ]
     in  smallerSorted ++ [x] ++ biggerSorted
+
+-- zipWith takes a function and two lists as parameters and then joins the two lists by applying the function between corresponding elements.
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+
+-- flip simply takes a function and returns a function that is like our original function, only the first two arguments are flipped
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f x y = f y x
