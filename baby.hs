@@ -79,3 +79,27 @@ a `myCompare` b
     | a < b     = LT
     | a > b     = GT
     | otherwise = EQ
+
+-- another fairly trivial function where we get a first and a last name and give someone back their initials
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where (f:_) = firstname
+          (l:_) = lastname
+
+-- a function that takes a list of weight-height pairs and returns a list of BMIs
+calcBmis :: (RealFloat a) => [(a, a)] -> [a]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+    where bmi weight height = weight / height ^ 2
+
+-- a function that gives us a cylinder's surface area based on its height and radius
+cylinder :: (RealFloat a) => a -> a -> a
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r ^ 2
+    in sideArea + 2 * topArea
+
+describeList :: [a] -> String
+describeList xs = "This list is " ++ case xs of [] -> "empty."
+                                                [_] -> "a singleton list."
+                                                [_,_] -> "a doubleton list."
+                                                _ -> "a longer list."
