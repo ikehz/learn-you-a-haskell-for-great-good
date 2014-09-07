@@ -11,5 +11,3 @@ Completed:
 - Syntax in Functions
 - Recursion
 - Higher order functions
-    - Curried functions
-    - Some higher-orderism is in order
