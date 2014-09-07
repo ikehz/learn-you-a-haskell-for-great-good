@@ -145,7 +145,7 @@ quicksort (x:xs) =
         biggerSorted = quicksort [ a | a <- xs, a > x ]
     in  smallerSorted ++ [x] ++ biggerSorted
 
--- zipWith takes a function and two lists as parameters and then joins the two lists by applying the function between corresponding elements.
+-- zipWith takes a function and two lists as parameters and then joins the two lists by applying the function between corresponding elements
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
 zipWith' _ [] _ = []
 zipWith' _ _ [] = []
@@ -154,3 +154,35 @@ zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 -- flip simply takes a function and returns a function that is like our original function, only the first two arguments are flipped
 flip' :: (a -> b -> c) -> (b -> a -> c)
 flip' f x y = f y x
+
+-- map takes a function and a list and applies that function to every element in the list, producing a new list
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
+
+-- filter is a function that takes a predicate and a list and then returns the list of elements that satisfy the predicate
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' p (x:xs)
+    | p x       = x : filter' p xs
+    | otherwise = filter' p xs
+
+quicksort' :: (Ord a) => [a] -> [a]
+quicksort' [] = []
+quicksort' (x:xs) = (quicksort lt) ++ [x] ++ (quicksort geq)
+    where lt  = filter (< x) xs
+          geq = filter (>= x) xs
+
+-- takeWhile takes a predicate and a list and then goes from the beginning of the list and returns its elements while the predicate holds true
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []
+takeWhile' p (x:xs)
+    | p x       = x : takeWhile' p xs
+    | otherwise = []
+
+-- Collatz sequence
+collatz :: Integral a => a -> [a]
+collatz 1 = [1]
+collatz n
+    | even n = n : collatz (n `div` 2)
+    | odd n  = n : collatz (3 * n + 1)
