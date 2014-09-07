@@ -11,3 +11,7 @@ Completed:
 - Syntax in Functions
 - Recursion
 - Higher order functions
+- Modules
+  - Loading modules
+  - Data.List
+  - Data.Char
