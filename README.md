@@ -12,6 +12,3 @@ Completed:
 - Recursion
 - Higher order functions
 - Modules
-  - Loading modules
-  - Data.List
-  - Data.Char
