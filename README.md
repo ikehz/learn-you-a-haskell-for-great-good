@@ -12,3 +12,7 @@ Completed:
 - Recursion
 - Higher order functions
 - Modules
+- Making Our Own Types and Typeclasses
+  - Algebraic data types intro
+  - Record syntax
+  - Type parameters
