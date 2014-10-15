@@ -16,3 +16,5 @@ Completed:
   - Algebraic data types intro
   - Record syntax
   - Type parameters
+  - Derived instances
+  - Type synonyms
