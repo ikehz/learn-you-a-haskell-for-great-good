@@ -13,3 +13,5 @@ Completed:
 - Higher order functions
 - Modules
 - Making Our Own Types and Typeclasses
+- Input and Output
+    - Hello, world!
