@@ -14,4 +14,3 @@ Completed:
 - Modules
 - Making Our Own Types and Typeclasses
 - Input and Output
-    - Hello, world!
