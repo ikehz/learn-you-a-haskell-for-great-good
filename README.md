@@ -14,3 +14,4 @@ Completed:
 - Modules
 - Making Our Own Types and Typeclasses
 - Input and Output
+- Functionally Solving Problems
