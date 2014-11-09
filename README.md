@@ -15,3 +15,4 @@ Completed:
 - Making Our Own Types and Typeclasses
 - Input and Output
 - Functionally Solving Problems
+- Functors, Applicative Functors, and Monoids
