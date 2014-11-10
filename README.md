@@ -16,3 +16,8 @@ Completed:
 - Input and Output
 - Functionally Solving Problems
 - Functors, Applicative Functors, and Monoids
+- A Fistful of Monads
+    - Getting our feet wet with Maybe
+    - The Monad type class
+    - Walk the line
+    - do notation
