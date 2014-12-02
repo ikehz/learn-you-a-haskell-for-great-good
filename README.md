@@ -22,3 +22,5 @@ Completed:
     - Reader? Ugh, not this joke again.
     - Tasteful stateful computations (skipped because out of date)
         - see the [Haskell Wikibook](https://en.wikibooks.org/wiki/Haskell/Understanding_monads/State) instead
+    - Error error on the wall
+    - Some useful monadic functions
