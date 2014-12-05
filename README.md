@@ -20,4 +20,3 @@ Completed:
 - For a Few Monads More
     - see the [Haskell Wikibook](https://en.wikibooks.org/wiki/Haskell/Understanding_monads/State) for state
 - Zippers
-    - at: Watch your step

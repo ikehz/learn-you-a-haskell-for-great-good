@@ -44,26 +44,29 @@ elemAt [] (Node x _ _) = x
 elemAt (L:ds) (Node _ l _) = elemAt ds l
 elemAt (R:ds) (Node _ _ r) = elemAt ds r
 
-type Breadcrumbs a = [Crumb a]
-
--- Take a tree and some breadcrumbs and move to the left sub-tree while adding L to the head of the
--- list that represents our breadcrumbs
-goLeft :: (Tree a, Breadcrumbs a) -> (Tree a, Breadcrumbs a)
-goLeft (Node x l r, bs) = (l, (LeftCrumb x r):bs)
-
--- And right
-goRight :: (Tree a, Breadcrumbs a) -> (Tree a, Breadcrumbs a)
-goRight (Node x l r, bs) = (r, (RightCrumb x l):bs)
-
-goUp :: (Tree a, Breadcrumbs a) -> (Tree a, Breadcrumbs a)
-goUp (l, (LeftCrumb x r):bs) = (Node x l r, bs)
-goUp (r, (RightCrumb x l):bs) = (Node x l r, bs)
-
 x -: f = f x
 
 data Crumb a = LeftCrumb a (Tree a) | RightCrumb a (Tree a) deriving (Show)
 
+type Breadcrumbs a = [Crumb a]
+
 type Zipper a = (Tree a, Breadcrumbs a)
+
+-- Take a tree and some breadcrumbs and move to the left sub-tree while adding L to the head of the
+-- list that represents our breadcrumbs
+goLeft :: Zipper a -> Maybe (Zipper a)
+goLeft (Node x l r, bs) = Just (l, (LeftCrumb x r):bs)
+goLeft (Empty, _) = Nothing
+
+-- And right
+goRight :: Zipper a -> Maybe (Zipper a)
+goRight (Node x l r, bs) = Just (r, (RightCrumb x l):bs)
+goRight (Empty, _) = Nothing
+
+goUp :: Zipper a -> Maybe (Zipper a)
+goUp (l, (LeftCrumb x r):bs) = Just (Node x l r, bs)
+goUp (r, (RightCrumb x l):bs) = Just (Node x l r, bs)
+goUp (_, []) = Nothing
 
 -- Modify the element in the root of the sub-tree that the zipper is focusing on
 modify :: (a -> a) -> Zipper a -> Zipper a
@@ -74,5 +77,6 @@ attach :: Tree a -> Zipper a -> Zipper a
 attach t (_, bs) = (t, bs)
 
 topMost :: Zipper a -> Zipper a
-topMost (t, []) = (t, [])
-topMost (t, bs) = topMost (goUp (t, bs))
+topMost (t, bs) = case (goUp (t, bs)) of
+    Just (r, cs) -> topMost (r, cs)
+    Nothing -> (t, bs)
